@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "\${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
-if [[ "\${EUID}" -ne 0 ]]; then
+if [[ "${EUID}" -ne 0 ]]; then
   echo "Run as root: sudo ./install.sh"
   exit 1
 fi
@@ -14,21 +14,21 @@ if [[ ! -f /etc/os-release ]]; then
 fi
 
 . /etc/os-release
-case "\${ID}" in
+case "${ID}" in
   ubuntu|debian) ;;
-  *) echo "Unsupported OS: \${PRETTY_NAME:-\${ID}}"; exit 1 ;;
+  *) echo "Unsupported OS: ${PRETTY_NAME:-${ID}}"; exit 1 ;;
 esac
 
 export DEBIAN_FRONTEND=noninteractive
 
-"\${SCRIPT_DIR}/scripts/setup-system.sh"
-"\${SCRIPT_DIR}/scripts/setup-ssh.sh"
-"\${SCRIPT_DIR}/scripts/setup-firewall.sh"
-"\${SCRIPT_DIR}/scripts/setup-docker.sh"
-"\${SCRIPT_DIR}/scripts/setup-fail2ban.sh"
-"\${SCRIPT_DIR}/scripts/setup-monitoring.sh"
-"\${SCRIPT_DIR}/scripts/setup-backup.sh"
-"\${SCRIPT_DIR}/scripts/setup-backup-remote.sh"
+"${SCRIPT_DIR}/scripts/setup-system.sh"
+"${SCRIPT_DIR}/scripts/setup-ssh.sh"
+"${SCRIPT_DIR}/scripts/setup-firewall.sh"
+"${SCRIPT_DIR}/scripts/setup-docker.sh"
+"${SCRIPT_DIR}/scripts/setup-fail2ban.sh"
+"${SCRIPT_DIR}/scripts/setup-monitoring.sh"
+"${SCRIPT_DIR}/scripts/setup-backup.sh"
+"${SCRIPT_DIR}/scripts/setup-backup-remote.sh"
 
 echo
 echo "Base server installation completed."
