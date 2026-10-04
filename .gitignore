@@ -1,1 +1,24 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.crt
+*.p12
 
+# Logs and generated data
+*.log
+logs/
+backup/
+backups/
+data/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.tmp
+*.swp
+*.swo
