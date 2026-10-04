@@ -26,6 +26,9 @@ export DEBIAN_FRONTEND=noninteractive
 "\${SCRIPT_DIR}/scripts/setup-firewall.sh"
 "\${SCRIPT_DIR}/scripts/setup-docker.sh"
 "\${SCRIPT_DIR}/scripts/setup-fail2ban.sh"
+"\${SCRIPT_DIR}/scripts/setup-monitoring.sh"
+"\${SCRIPT_DIR}/scripts/setup-backup.sh"
+"\${SCRIPT_DIR}/scripts/setup-backup-remote.sh"
 
 echo
 echo "Base server installation completed."
