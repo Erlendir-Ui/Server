@@ -34,8 +34,8 @@ sudo ./install.sh
 - [x] Docker
 - [x] Fail2Ban
 - [ ] SSH hardening после подтверждения доступа по ключу
-- [ ] Monitoring
-- [ ] Backup
+- [x] Monitoring
+- [x] Backup
 - [ ] VPN
 
 ## Структура
