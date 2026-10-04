@@ -6,6 +6,9 @@
 *.pem
 *.crt
 *.p12
+remote.env
+rclone.conf
+restic-password
 
 # Logs and generated data
 *.log
