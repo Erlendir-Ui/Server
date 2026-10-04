@@ -13,11 +13,11 @@ check_service ssh
 check_service docker
 check_service fail2ban
 if ufw status | grep -q "Status: active"; then echo "OK   ufw"; else echo "FAIL ufw"; failed=1; fi
-if df -P / | awk 'NR==2 {gsub("%","",$5); exit ($5 >= 90)}'; then
+if df -P / | awk 'NR==2 {gsub("%","",$5); exit ($5 < 90)}'; then
+  echo "OK   disk usage < 90%"
+else
   echo "FAIL disk usage >= 90%"
   failed=1
-else
-  echo "OK   disk usage < 90%"
 fi
 exit "$failed"
 EOF
