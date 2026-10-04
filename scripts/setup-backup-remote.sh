@@ -28,9 +28,9 @@ fi
 
 source "$ENV_FILE"
 
-: "\${RESTIC_REPOSITORY:?RESTIC_REPOSITORY is required}"
-: "\${RESTIC_PASSWORD_FILE:?RESTIC_PASSWORD_FILE is required}"
-: "\${RCLONE_CONFIG:?RCLONE_CONFIG is required}"
+: "${RESTIC_REPOSITORY:?RESTIC_REPOSITORY is required}"
+: "${RESTIC_PASSWORD_FILE:?RESTIC_PASSWORD_FILE is required}"
+: "${RCLONE_CONFIG:?RCLONE_CONFIG is required}"
 
 if [[ ! -f "$RESTIC_PASSWORD_FILE" ]]; then
   echo "Missing restic password file: $RESTIC_PASSWORD_FILE"
@@ -53,7 +53,7 @@ restic -r "$RESTIC_REPOSITORY" --password-file "$RESTIC_PASSWORD_FILE" \
   /usr/local/lib/server-backup-remote.sh
 
 restic -r "$RESTIC_REPOSITORY" --password-file "$RESTIC_PASSWORD_FILE" \
-  forget --keep-daily "\${RESTIC_KEEP_DAILY:-30}" --prune
+  forget --keep-daily "${RESTIC_KEEP_DAILY:-30}" --prune
 
 restic -r "$RESTIC_REPOSITORY" --password-file "$RESTIC_PASSWORD_FILE" check
 EOF
