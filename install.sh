@@ -24,12 +24,12 @@ export DEBIAN_FRONTEND=noninteractive
 "${SCRIPT_DIR}/scripts/setup-system.sh"
 "${SCRIPT_DIR}/scripts/setup-ssh.sh"
 "${SCRIPT_DIR}/scripts/setup-firewall.sh"
-"${SCRIPT_DIR}/scripts/setup-docker.sh"
+"${SCRIPT_DIR}/scripts/setup-swap.sh"
 "${SCRIPT_DIR}/scripts/setup-fail2ban.sh"
 "${SCRIPT_DIR}/scripts/setup-monitoring.sh"
-"${SCRIPT_DIR}/scripts/setup-backup.sh"
-"${SCRIPT_DIR}/scripts/setup-backup-remote.sh"
 
 echo
 echo "Base server installation completed."
+echo "Base profile is optimized for small VPSs."
+echo "Optional modules: modules/docker, modules/backup-local, modules/backup-remote."
 echo "Verify SSH access before closing this session."
