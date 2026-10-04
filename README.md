@@ -50,7 +50,10 @@ Server/
     ├── setup-ssh.sh
     ├── setup-firewall.sh
     ├── setup-docker.sh
-    └── setup-fail2ban.sh
+    ├── setup-fail2ban.sh
+    ├── setup-monitoring.sh
+    ├── setup-backup.sh
+    └── setup-backup-remote.sh
 \`\`\`
 
 ## Безопасность
