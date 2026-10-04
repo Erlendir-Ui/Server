@@ -1,11 +1,32 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
+
 SCRIPT_DIR="$(cd -- "$(dirname -- "\${BASH_SOURCE[0]}")" && pwd)"
-if [[ "\${EUID}" -ne 0 ]]; then echo "Run as root: sudo ./install.sh"; exit 1; fi
+
+if [[ "\${EUID}" -ne 0 ]]; then
+  echo "Run as root: sudo ./install.sh"
+  exit 1
+fi
+
+if [[ ! -f /etc/os-release ]]; then
+  echo "Cannot detect operating system."
+  exit 1
+fi
+
 . /etc/os-release
-case "\${ID}" in ubuntu|debian) ;; *) echo "Unsupported OS: \${PRETTY_NAME:-\${ID}}"; exit 1;; esac
+case "\${ID}" in
+  ubuntu|debian) ;;
+  *) echo "Unsupported OS: \${PRETTY_NAME:-\${ID}}"; exit 1 ;;
+esac
+
 export DEBIAN_FRONTEND=noninteractive
+
 "\${SCRIPT_DIR}/scripts/setup-system.sh"
 "\${SCRIPT_DIR}/scripts/setup-ssh.sh"
 "\${SCRIPT_DIR}/scripts/setup-firewall.sh"
-echo "Base installation completed. Verify SSH access before closing this session."
+"\${SCRIPT_DIR}/scripts/setup-docker.sh"
+"\${SCRIPT_DIR}/scripts/setup-fail2ban.sh"
+
+echo
+echo "Base server installation completed."
+echo "Verify SSH access before closing this session."
